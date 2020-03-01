@@ -1,13 +1,15 @@
 class GoogleGeocodeService
   def get_coordinates(location)
-    params = {location: location, key: ENV['GOOGLE_KEY']}
-    json_parse(params)
+    params = {address: location, key: ENV['GOOGLE_KEY']}
+    response = json_parse(params)
+    coordinates = response['results'][0]['geometry']['location']
+    "#{coordinates['lat']},#{coordinates['lng']}"
   end
 
   private
     def connection
       Faraday.new('https://maps.googleapis.com/maps/api/geocode/json') do |f|
-        f.default_adapter Faraday.default_adapter
+        f.adapter Faraday.default_adapter
       end
     end
 
