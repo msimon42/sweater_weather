@@ -2,7 +2,7 @@ class Munchie
   def initialize(origin, destination, food)
     @travel_data = GoogleGeocodeService.new.travel_time(origin, destination)
     @coordinates = GoogleGeocodeService.new.get_coordinates(destination)
-    @weather_data = DarkskyService.new.weather_data_by_location(@coordinates[:coordinates])
+    @weather_data = DarkskyService.new.weather_data_by_location("#{@coordinates[:coordinates]},#{Time.now.to_i + @travel_data[:value]}")
     @restaurant_data = YelpService.new.find_restaurant(destination, food, (Time.now.to_i + @travel_data[:value]))
   end
 
