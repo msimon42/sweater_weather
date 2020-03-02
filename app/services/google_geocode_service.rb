@@ -12,7 +12,7 @@ class GoogleGeocodeService
     params = {origin: origin, destination: destination, key: ENV['GOOGLE_KEY']}
     endpoint = 'maps/api/directions/json'
     response = json_parse(endpoint, params)
-    response['routes'][0]['legs'][0]['duration']['text']
+    {text: response['routes'][0]['legs'][0]['duration']['text'], value: response['routes'][0]['legs'][0]['duration']['value']}
   end
 
   private

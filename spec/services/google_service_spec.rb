@@ -24,7 +24,7 @@ feature GoogleGeocodeService do
         destination = 'pueblo,co'
 
         duration = GoogleGeocodeService.new.travel_time(origin, destination)
-        expect(duration).to eq('1 hour 48 mins')
+        expect(duration).to eq({text: '1 hour 48 mins', value: 6455})
       end
     end
   end
