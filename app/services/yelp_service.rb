@@ -3,7 +3,7 @@ class YelpService
     params = {term: type, location: destination, limit: 1, open_at: time}
     endpoint = 'v3/businesses/search'
     response = json_parse(endpoint, params)
-    response['businesses'][0]['name']
+    {name: response['businesses'][0]['name'], address: response['businesses'][0]['location']['display_address'].join}
   end
 
   private
