@@ -58,3 +58,4 @@ class ForecastGenerator
     end
   end
 end
+end
