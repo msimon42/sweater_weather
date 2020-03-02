@@ -1,6 +1,7 @@
 class ForecastSerializer
   include FastJsonapi::ObjectSerializer
 
+  set_id :response_id
   attributes :current_temperature,
              :current_summary,
              :current_time,
