@@ -23,7 +23,7 @@ RSpec.describe ForecastGenerator do
     end
 
     it 'tomorrow' do
-      expect(@forecast.tomorrow).to eq('')
+      expect(@forecast.tomorrow).to eq('Clear throughout the day.')
     end
 
     it 'humidity' do

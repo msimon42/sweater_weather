@@ -1,8 +1,9 @@
 class ForecastGenerator
-
+  attr_accessor :response_id
   def initialize(location)
     @location_data = GoogleGeocodeService.new.get_coordinates(location)
     @temp_data = DarkskyService.new.weather_data_by_location(@location_data[:coordinates])
+    @response_id = rand(0..100000)
   end
 
   def current_temperature
@@ -11,6 +12,10 @@ class ForecastGenerator
 
   def current_summary
     @current_summary ||= @temp_data['currently']['summary']
+  end
+
+  def current_time
+    @current_time ||= @temp_data['currently']['time']
   end
 
   def formatted_location
@@ -22,7 +27,8 @@ class ForecastGenerator
   end
 
   def tomorrow
-    @tomorrow ||= @temp_data['daily']['data'][0]['summary']
+    @tomorrow ||= @temp_data['daily']['data'][1]['summary']
+  end
 
   def humidity
     @humidity ||= @temp_data['currently']['humidity']
@@ -57,5 +63,4 @@ class ForecastGenerator
       }
     end
   end
-end
 end
