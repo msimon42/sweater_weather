@@ -13,6 +13,10 @@ class ForecastGenerator
     @current_summary ||= @temp_data['currently']['summary']
   end
 
+  def current_time
+    @current_time ||= @temp_data['currently']['time']
+  end   
+
   def formatted_location
     @formatted_location ||= @location_data[:location]
   end
