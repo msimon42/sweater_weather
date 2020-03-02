@@ -3,7 +3,8 @@ class GoogleGeocodeService
     params = {address: location, key: ENV['GOOGLE_KEY']}
     response = json_parse(params)
     coordinates = response['results'][0]['geometry']['location']
-    "#{coordinates['lat']},#{coordinates['lng']}"
+    location = response['results'][0]['formatted_address']
+    {coordinates: "#{coordinates['lat']},#{coordinates['lng']}", location: location}
   end
 
   private

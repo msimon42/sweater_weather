@@ -12,9 +12,9 @@ feature GoogleGeocodeService do
         chicago_coordinates = GoogleGeocodeService.new.get_coordinates(city_2)
         san_francisco_coordinates = GoogleGeocodeService.new.get_coordinates(city_3)
 
-        expect(denver_coordinates).to eq('39.7392358,-104.990251')
-        expect(chicago_coordinates).to eq('41.8781136,-87.6297982')
-        expect(san_francisco_coordinates).to eq('37.7749295,-122.4194155')
+        expect(denver_coordinates).to eq({coordinates: '39.7392358,-104.990251', location: 'Denver, CO, USA'})
+        expect(chicago_coordinates).to eq({coordinates:'41.8781136,-87.6297982', location: 'Chicago, IL, USA'})
+        expect(san_francisco_coordinates).to eq({coordinates:'37.7749295,-122.4194155', location: 'San Francisco, CA, USA'})
       end
     end
   end
