@@ -17,5 +17,15 @@ feature GoogleGeocodeService do
         expect(san_francisco_coordinates).to eq({coordinates:'37.7749295,-122.4194155', location: 'San Francisco, CA, USA'})
       end
     end
+
+    feature 'travel_time' do
+      scenario 'returns travel time between two locations', :vcr do
+        origin = 'denver,co'
+        destination = 'pueblo,co'
+
+        duration = GoogleGeocodeService.new.travel_time(origin, destination)
+        expect(duration).to eq('1 hour 48 mins')
+      end
+    end
   end
 end
