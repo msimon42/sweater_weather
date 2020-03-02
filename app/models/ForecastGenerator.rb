@@ -27,7 +27,7 @@ class ForecastGenerator
   end
 
   def tomorrow
-    @tomorrow ||= @temp_data['daily']['data'][0]['summary']
+    @tomorrow ||= @temp_data['daily']['data'][1]['summary']
   end
 
   def humidity
