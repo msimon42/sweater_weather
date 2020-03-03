@@ -14,6 +14,6 @@ RSpec.describe 'create session' do
     expect(response).to be_successful
     body = JSON.parse(response.body)
 
-    expect(body).to eq({'api_key' => User.api_key})
+    expect(body).to eq({'api_key' => @user.api_key})
   end
 end
