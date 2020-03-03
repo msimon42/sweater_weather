@@ -6,7 +6,8 @@ RSpec.describe 'create user' do
   it 'works' do
     post '/api/v1/users', params: {
       email: 'test@example.com',
-      password: 'password'
+      password: 'password',
+      password_confirmation: 'password'
     }
 
     expect(response).to be_successful
