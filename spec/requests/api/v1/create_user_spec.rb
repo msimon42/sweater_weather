@@ -14,4 +14,15 @@ RSpec.describe 'create user' do
 
     expect(body).to eq({'api_key' => User.last.api_key})
   end
+
+  it 'does not work' do
+    post '/api/v1/users', params: {
+      password: 'password'
+    }
+
+    expect(response.status).to eq(400)
+    body = JSON.parse(response.body)
+
+    expect(body).to eq({'errors' => "Email can't be blank"})
+  end
 end
