@@ -1,4 +1,4 @@
-class RoadTrip
+class Trip
   def initialize(origin, destination)
     @travel_data ||= GoogleGeocodeService.new.directions_endpoint(origin, destination)
     @geo_data ||= GoogleGeocodeService.new.geocode_endpoint(destination)
@@ -24,5 +24,5 @@ class RoadTrip
 
   def arrival_weather_summary
     @arrival_weather_summary = @weather_data.current_summary
-  end   
+  end
 end
