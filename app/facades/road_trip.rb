@@ -1,9 +1,9 @@
 class RoadTrip
-  def initialize(origin, destination, food)
+  def initialize(origin, destination)
     @travel_data ||= GoogleGeocodeService.new.directions_endpoint(origin, destination)
-    @coordinates ||= GoogleGeocodeService.new.geocode_endpoint(destination)
-    @weather_data ||= DarkskyService.new.weather_data_by_location("#{@coordinates[:coordinates]},#{Time.now.to_i + travel_time[:value]}")
+    @geo_data ||= GoogleGeocodeService.new.geocode_endpoint(destination)
     @location_data ||= LocationData.new
+    @weather_data ||= DarkskyData.new(@location_data.get_coordinates(@geo_data))
   end
 
   def start_location
@@ -15,10 +15,14 @@ class RoadTrip
   end
 
   def travel_time
-    @travel_time = @location_data.travel_time[:text]
+    @travel_time = @location_data.travel_time(@travel_data)[:text]
   end
 
-  def forecast
-    @forecast = @weather_data['currently']['summary']
+  def arrival_temperature
+    @arrival_temperature = @weather_data.current_temperature
   end
+
+  def arrival_weather_summary
+    @arrival_weather_summary = @weather_data.current_summary
+  end   
 end
