@@ -1,21 +1,25 @@
 class GoogleGeocodeService
-  def get_coordinates(location)
+  def geocode_endpoint(location)
     params = {address: location, key: ENV['GOOGLE_KEY']}
-    response = json_parse(params)
-    coordinates = response['results'][0]['geometry']['location']
-    location = response['results'][0]['formatted_address']
-    {coordinates: "#{coordinates['lat']},#{coordinates['lng']}", location: location}
+    endpoint = 'maps/api/geocode/json'
+    response = json_parse(endpoint, params)
+  end
+
+  def directions_endpoint(origin, destination)
+    params = {origin: origin, destination: destination, key: ENV['GOOGLE_KEY']}
+    endpoint = 'maps/api/directions/json'
+    response = json_parse(endpoint, params)
   end
 
   private
     def connection
-      Faraday.new('https://maps.googleapis.com/maps/api/geocode/json') do |f|
+      Faraday.new('https://maps.googleapis.com') do |f|
         f.adapter Faraday.default_adapter
       end
     end
 
-    def json_parse(params)
-      response = connection.get do |request|
+    def json_parse(endpoint, params)
+      response = connection.get(endpoint) do |request|
         request.params = params
       end
       JSON.parse(response.body)
