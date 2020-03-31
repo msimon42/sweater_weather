@@ -20,7 +20,7 @@ This application is live at: http://whether-sweater-df.herokuapp.com/
 
 ## Description
 
-This is the Weather Sweater API, an API-only Rails back-end application designed to serve data to a fictional "Sweater Weather" front-end application. It was developed by [Daniel Frampton](https://github.com/DanielEFrampton) as a project for <a href="http://turing.io">Turing School of Software & Design</a> in order to practice 3rd party API consumption, combining outputs, and exposing data and authentication functionality via an API.
+This is the Weather Sweater API, an API-only Rails back-end application designed to serve data to a fictional "Sweater Weather" front-end application. It was developed by [Matt Simon](https://github.com/msimon42) as a project for <a href="http://turing.io">Turing School of Software & Design</a> in order to practice 3rd party API consumption, combining outputs, and exposing data and authentication functionality via an API.
 
 ## Technologies & Architecture
 
